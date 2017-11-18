@@ -1,30 +1,22 @@
-'use strict';
+import "../config/env";
 
-process.env.BABEL_ENV = 'development';
-process.env.NODE_ENV = 'development';
+import fs from "fs";
+import chalk from "chalk";
+import webpack from "webpack";
+import WebpackDevServer from "webpack-dev-server";
+import clearConsole from "react-dev-utils/clearConsole";
+import checkRequiredFiles from "react-dev-utils/checkRequiredFiles";
+import { choosePort, createCompiler, prepareProxy, prepareUrls } from "react-dev-utils/WebpackDevServerUtils";
+import openBrowser from "react-dev-utils/openBrowser";
+import paths from "../config/paths";
+import config from "../config/webpack.config.dev";
+import createDevServerConfig from "../config/webpackDevServer.config";
 
-process.on('unhandledRejection', err => {
+
+process.on("unhandledRejection", (err) => {
   throw err;
 });
 
-require('../config/env');
-
-const fs = require('fs');
-const chalk = require('chalk');
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const clearConsole = require('react-dev-utils/clearConsole');
-const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
-const {
-  choosePort,
-  createCompiler,
-  prepareProxy,
-  prepareUrls,
-} = require('react-dev-utils/WebpackDevServerUtils');
-const openBrowser = require('react-dev-utils/openBrowser');
-const paths = require('../config/paths');
-const config = require('../config/webpack.config.dev');
-const createDevServerConfig = require('../config/webpackDevServer.config');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
@@ -33,15 +25,16 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
-const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
-const HOST = process.env.HOST || '0.0.0.0';
+const DEFAULT_PORT = 3000;
+const PORT = parseInt(process.env.PORT, 10) || DEFAULT_PORT;
+const HOST = process.env.HOST || "0.0.0.0";
 
-choosePort(HOST, DEFAULT_PORT)
-  .then(port => {
-    if (port == null) {
+choosePort(HOST, PORT).
+  then((port) => {
+    if (!port) {
       return;
     }
-    const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+    const protocol = process.env.HTTPS === "true" ? "https" : "http";
     const appName = require(paths.appPackageJson).name;
     const urls = prepareUrls(protocol, HOST, port);
     const compiler = createCompiler(webpack, config, appName, urls, useYarn);
@@ -52,25 +45,29 @@ choosePort(HOST, DEFAULT_PORT)
       urls.lanUrlForConfig
     );
     const devServer = new WebpackDevServer(compiler, serverConfig);
-    devServer.listen(port, HOST, err => {
+    devServer.listen(port, HOST, (err) => {
       if (err) {
-        return console.log(err);
+        console.log(err);
+
+        return;
       }
+
       if (isInteractive) {
         clearConsole();
       }
-      console.log(chalk.cyan('Starting the development server...\n'));
+
+      console.log(chalk.cyan("Starting the development server...\n"));
       openBrowser(urls.localUrlForBrowser);
     });
 
-    ['SIGINT', 'SIGTERM'].forEach(function(sig) {
-      process.on(sig, function() {
+    ["SIGINT", "SIGTERM"].forEach((sig) => {
+      process.on(sig, () => {
         devServer.close();
         process.exit();
       });
     });
-  })
-  .catch(err => {
+  }).
+  catch((err) => {
     if (err && err.message) {
       console.log(err.message);
     }
