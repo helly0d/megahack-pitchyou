@@ -3,4 +3,4 @@
 
 ### Description
 
-To be added soon
+Platform for investors and small businesses
