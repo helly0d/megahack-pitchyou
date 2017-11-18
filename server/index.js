@@ -5,13 +5,15 @@ import proxy from "express-http-proxy";
 const port = 3001;
 const app = express();
 
-app.use("/api/psd2", proxy("https://psd2-test.younify.ro/api/v1", {
-  userResHeaderDecorator(headers, userReq, userRes, proxyReq, proxyRes) {
-    // recieves an Object of headers, returns an Object of headers.
+app.use("/api/psd2", proxy("https://psd2-test.younify.ro", {
+  proxyReqPathResolver(req) {
+    return `/api/v1${req.url}`;
+  },
+  proxyReqOptDecorator(proxyReqOpts) {
+    proxyReqOpts.headers["X-AUTH-TOKEN"] = "SDdIbDgzZmpFblRBem5MTzB4dlhlNQ==";
+    proxyReqOpts.headers.accept = "application/json";
 
-    console.log(headers);
-
-    return headers;
+    return proxyReqOpts;
   },
 }));
 
@@ -20,5 +22,7 @@ const server = http.createServer(app);
 server.listen(port, (err) => {
   if (err) {
     console.log(err);
+  } else {
+    console.log(`Server started on port: ${port}`);
   }
 });
