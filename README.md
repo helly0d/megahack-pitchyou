@@ -3,4 +3,4 @@
 
 ### Description
 
-Platform for investors and small businesses
+Platform for investors and small businesses.
