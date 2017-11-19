@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import FontAwesome from "react-fontawesome";
 
 import Homepage from "./homepage";
 import Login from "./login";
@@ -11,23 +12,21 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">PITCH you</h1>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/login">Login</Link></li>
-            </ul>
-
-            <hr />
+        <div className="app">
+          <header className="app-header">
+            <Link className="app-header-logo" to="/">PITCH YOU</Link>
+            <Link className="app-login-nav" to="/login">
+              <FontAwesome className="login-icon" name="sign-in" size="1.5x" />
+              Login
+            </Link>
           </header>
 
-          <p className="App-intro">
-            <div>
-              <Route exact={true} path="/" component={Homepage} />
-              <Route path="/login" component={Login} />
-            </div>
-          </p>
+          <main className="app-container">
+            <Route exact={true} path="/" component={Homepage} />
+            <Route path="/login" component={Login} />
+          </main>
+
+          <footer className="app-footer" />
         </div>
       </Router>
     );

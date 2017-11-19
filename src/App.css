@@ -1,19 +1,90 @@
-.App {
+.app {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.app-header {
+  position: relative;
+  background-color: #242331;
+  padding-top: 3px;
+  height: 50px;
+  width: 100%;
+  color: #fffafa;
+  opacity: 0.8;
+  transition: opacity 0.35s;
+}
+
+.app-header:hover {
+  opacity: 1;
+}
+
+.app-header::after {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #67d38f;
+  content: "";
+}
+
+.app-header-logo {
+  position: absolute;
+  left: 20px;
+  width: 100px;
+  height: 50px;
   text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  transition: color 0.35s;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.app-header-logo:hover {
+  color: #67d38f;
 }
 
-.App-title {
-  font-size: 1.5em;
+.app-login-nav {
+  position: absolute;
+  right: 0px;
+  margin: 10px 20px;
+  height: 30px;
+  width: 100px;
+  box-sizing: border-box;
+  border: 1px solid #67d38f;
+  border-radius: 3px;
+  background: #fffafa;
+  color: #242331;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.9;
+  transition: opacity 0.35s;
 }
 
-.App-intro {
+.app-login-nav:hover {
+  opacity: 1;
+}
+
+.login-icon {
+  margin: 0 10px 0 0;
+}
+.app-footer {
+  background-color: #242331;
+  height: 50px;
+  width: 100%;
+  color: #fffafa;
+}
+
+.app-header-logo {
+  font-size: 16px;
+  color: #fffafa;
+}
+
+.app-container {
   padding-top: 100px;
-  font-size: large;
+  font-size: 12px;
+  flex: 1 1 auto;
 }
