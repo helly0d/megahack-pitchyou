@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
 
-export default class InvestorProfile extends Component {
+export default class Terms extends Component {
   render() {
     return (
       <div>
-        Investor profile
+        <h1>Terms & conditions</h1>
       </div>
     );
   }
