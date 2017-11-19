@@ -19,26 +19,14 @@ router.route("/login").
 // /api/account if cookie: return user data
 router.route("/account").
   post((req, res) => {
-    const cookieCurrent = req.cookies.session;
-    if (cookieCurrent) {
-      const user = users.credentials.find(({ cookie }) => cookie === "valid");
+    const cookieCurrent = req.cookies.pitch_SSID;
+    const activeUserId = Object.keys(user.credentials).find((id) => user.credentials[id].bearer === cookieCurrent);
+    if (activeUserId) {
+      const user = users.profiles.find(({ id }) => id === activeUserId);
       res.status(200);
       res.send(JSON.stringify(user));
     }
   });
 
-
-router.route("/getdata").
-  post((req, res) => {
-    const foundUser = getData(req.body.email);
-    res.setHeader("Content-Type", "application/json");
-    if (foundUser) {
-      res.status(200);
-      res.send(JSON.stringify(foundUser));
-    } else {
-      res.status(404);
-      res.send(JSON.stringify({ err: "Not Found" }));
-    }
-  });
 
 export default router;
