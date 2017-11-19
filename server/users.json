@@ -1,35 +1,44 @@
-[
-  {
-    "id": "1",
-    "firstName": "POPESCU",
-    "lastName": "Adelina",
-    "gender": "FEMALE",
-    "birthDate": "1994-10-23",
-    "identityDocumentType": "NATIONALID",
-    "identityDocumentId": "ZB 801817",
-    "address": "Vacarescu elena 22, Bl U8, Sc 4, Et 9, Ap 100",
-    "postalCode": "511927",
-    "city": "Brasov",
-    "country": "RO",
-    "email": "adelina.popescu@email.com",
-    "password": "test",
-    "phone": "0700000000"
-  },
-  {
-    "id": "1",
-    "firstName": "POPICA",
-    "lastName": "MITICA",
-    "gender": "MALE",
-    "birthDate": "1995-11-29",
-    "identityDocumentType": "NATIONALID",
-    "identityDocumentId": "ZC 801187",
-    "address": "Vacarescu elena 22, Bl U8, Sc 4, Et 9, Ap 100",
-    "postalCode": "512327",
-    "city": "Bacau",
-    "country": "RO",
-    "email": "mitica.popescu@email.com",
-    "password": "test",
-    "cookie": "valid",
-    "phone": "0700000000"
+{
+  "profiles": [
+    {
+      "id": "1",
+      "firstName": "POPESCU",
+      "lastName": "Adelina",
+      "gender": "FEMALE",
+      "birthDate": "1994-10-23",
+      "identityDocumentType": "NATIONALID",
+      "identityDocumentId": "ZB 801817",
+      "address": "Vacarescu elena 22, Bl U8, Sc 4, Et 9, Ap 100",
+      "postalCode": "511927",
+      "city": "Brasov",
+      "country": "RO",
+      "email": "adelina.popescu@email.com",
+      "phone": "0700000000"
+    },
+    {
+      "id": "2",
+      "firstName": "POPICA",
+      "lastName": "MITICA",
+      "gender": "MALE",
+      "birthDate": "1995-11-29",
+      "identityDocumentType": "NATIONALID",
+      "identityDocumentId": "ZC 801187",
+      "address": "Vacarescu elena 22, Bl U8, Sc 4, Et 9, Ap 100",
+      "postalCode": "512327",
+      "city": "Bacau",
+      "country": "RO",
+      "email": "mitica.popescu@email.com",
+      "phone": "0700000001"
+    }
+  ],
+  "credentials": {
+    "1": {
+      "password": "test",
+      "bearer": "f338dc70a52e260dddba4ddabc8f447f8b2cd612"
+    },
+    "2": {
+      "password": "test",
+      "bearer": "e689dc4e66cb9603130e247b462921a56f7276bb"
+    }
   }
-]
+}

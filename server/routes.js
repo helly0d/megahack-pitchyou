@@ -1,19 +1,19 @@
 import express from "express";
-import fs from "fs";
 import users from "./users.json";
 
 
 const router = express.Router();
 
-const getData = (userName) => users.find(({ email }) => email.toLowerCase() === userName.toLowerCase());
-
 router.route("/login").
   post((req, res) => {
-    const emailEntered = req.body.email;
-    const currentUser = users.find(({ email }) => email === emailEntered);
-    if currentUser.password == req.body.password;{
-      res.cookie('session','valid', { maxAge: 900000, httpOnly: true });
+    const reqEmail = req.body.email;
+    const reqPassword = req.body.password;
+    const currentUser = users.profiles.find(({ email }) => email === reqEmail);
+    if (currentUser && users.credentials[currentUser.id].password === reqPassword) {
+      res.cookie("pitch_SSID", users.credentials[currentUser.id].bearer, { maxAge: 900000, httpOnly: true });
     }
+
+    res.send(JSON.stringify(currentUser));
   });
 
 // /api/account if cookie: return user data
@@ -21,7 +21,7 @@ router.route("/account").
   post((req, res) => {
     const cookieCurrent = req.cookies.session;
     if (cookieCurrent) {
-      const user = users.find(({ cookie }) => cookie === "valid");
+      const user = users.credentials.find(({ cookie }) => cookie === "valid");
       res.status(200);
       res.send(JSON.stringify(user));
     }
