@@ -9,12 +9,7 @@ export default class Homepage extends Component {
     return (
       <div className="homepage">
         <div className="homepage-description">
-          <img className="homepage-logo" src={logo} alt="PITCH YOU" />
-          <p className="homepage-motto">
-            PITCH YOUR IDEA
-            <br />
-            PITCH THE VALUE OF YOUR INVESTMENT
-          </p>
+          <img className="homepage-logo" src={logo} alt="INview" />
         </div>
       </div>
     );
