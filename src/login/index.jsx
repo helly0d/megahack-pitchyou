@@ -1,10 +1,24 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import request from "superagent";
+import { Redirect } from "react-router";
 
+import { loginUser } from "../redux/action_creators";
 import "./login.css";
 
 
-export default class Login extends Component {
+class Login extends Component {
+  static propTypes = {
+    isLogged: PropTypes.bool.isRequired,
+    onLogin: PropTypes.func.isRequired,
+  }
+
   render() {
+    if (this.props.isLogged) {
+      return <Redirect push={true} to="/myaccount" />;
+    }
+
     return (
       <div className="login">
         <div className="login-container">
@@ -39,6 +53,25 @@ export default class Login extends Component {
   }
 
   onSubmit = () => {
-    console.log(this.emailNode.value, this.passwordNode.value);
+    const body = {
+      email: this.emailNode.value,
+      password: this.passwordNode.value,
+    };
+
+    request.post("/api/login").set("accept", "json").send(body).
+      end((err, res) => {
+        if (!err) {
+          this.props.onLogin(JSON.parse(res.text));
+        }
+      });
   }
 }
+
+export default connect(
+  (state) => {
+    return { isLogged: !!state.pitch.user };
+  },
+  (dispatch) => {
+    return { onLogin: (user) => dispatch(loginUser(user)) };
+  }
+)(Login);

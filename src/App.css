@@ -50,7 +50,7 @@
   width: 100px;
   box-sizing: border-box;
   border: 1px solid #67d38f;
-  border-radius: 3px;
+  border-radius: 5px;
   background: #fffafa;
   color: #242331;
   text-align: center;
@@ -101,4 +101,45 @@
   max-width: 100%;
   overflow-y: auto;
   box-sizing: border-box;
+}
+
+.app-account-details {
+  position: absolute;
+  right: 0px;
+  height: 50px;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-notification-bell {
+  color: #fffafa;
+  opacity: 0.9;
+  transition: opacity 0.35s;
+}
+
+.app-notification-bell:hover {
+  opacity: 1;
+}
+
+.app-my-account-nav {
+  border: 1px solid #67d38f;
+  border-radius: 5px;
+  background: #fffafa;
+  color: #242331;
+  height: 30px;
+  margin: 10px 0 10px 20px;
+  font-size: 12px;
+  line-height: 30px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0.9;
+  transition: opacity 0.35s;
+}
+
+.app-my-account-nav:hover {
+  opacity: 1;
 }

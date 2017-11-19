@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import logo from "../wave.png";
+import logo from "../inviewblack.png";
 import "./homepage.css";
 
 

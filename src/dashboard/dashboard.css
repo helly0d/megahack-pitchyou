@@ -1,0 +1,81 @@
+.dashboard-container {
+  width: 980px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.dashboard-member {
+  width: 350px;
+  min-height: 200px;
+  background: #242331;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+
+.dashboard-avatar {
+  background: #fffafa;
+  border-radius: 5px;
+  margin: 20px auto;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dashboard-banks-container {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #fffafa;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.dashboard-banks {
+  margin: 20px;
+  background: #fffafa;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banks-logo {
+  width: 35px;
+}
+
+.avatar-icon {
+  color: #242331;
+  font-size: 150px;
+}
+
+.dashboard-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fffafa;
+}
+
+
+.dashboard-stats {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+}
+
+.weekly-stats, .monthly-stats {
+  display: flex;
+  flex-direction: column;
+  color: #fffafa;
+  background-color: #242331;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 30px;
+}

@@ -17,9 +17,14 @@ app.use("/api/psd2", proxy("https://psd2-test.younify.ro", {
   proxyReqPathResolver(req) {
     return `/api/v1${req.url}`;
   },
-  proxyReqOptDecorator(proxyReqOpts) {
+  proxyReqOptDecorator(proxyReqOpts, srcReq) {
     proxyReqOpts.headers["X-AUTH-TOKEN"] = "SDdIbDgzZmpFblRBem5MTzB4dlhlNQ==";
     proxyReqOpts.headers.accept = "application/json";
+
+    const cookieCurrent = srcReq.cookies.pitch_SSID;
+    if (cookieCurrent) {
+      proxyReqOpts.headers.Authorization = `Bearer ${cookieCurrent}`;
+    }
 
     return proxyReqOpts;
   },
