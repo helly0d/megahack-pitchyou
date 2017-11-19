@@ -7,7 +7,6 @@ import WebpackDevServer from "webpack-dev-server";
 import clearConsole from "react-dev-utils/clearConsole";
 import checkRequiredFiles from "react-dev-utils/checkRequiredFiles";
 import { choosePort, createCompiler, prepareProxy, prepareUrls } from "react-dev-utils/WebpackDevServerUtils";
-import openBrowser from "react-dev-utils/openBrowser";
 import paths from "../config/paths";
 import config from "../config/webpack.config.dev";
 import createDevServerConfig from "../config/webpackDevServer.config";
@@ -57,7 +56,6 @@ choosePort(HOST, PORT).
       }
 
       console.log(chalk.cyan("Starting the development server...\n"));
-      openBrowser(urls.localUrlForBrowser);
     });
 
     ["SIGINT", "SIGTERM"].forEach((sig) => {
